@@ -1,21 +1,21 @@
-### University Scholarship Allocation System – Python Program
+# University Scholarship Allocation System
 
-### 1\. Problem Statement
+### 1. Problem Statement
 
 The University Scholarship Allocation System is designed to evaluate students who apply for scholarships based on their academic performance and eligibility criteria.
 
 The system considers the following factors:
 
-* Aggregate Marks: Students must score at least 75% in aggregate.
-* Subject-wise Minimum Marks: Students must score at least 60 marks in every subject.
-* Attendance: Students must have at least 75% attendance.
-* Family Income: Annual family income must not exceed ₹2,50,000.
-* Ranking: Eligible students are ranked according to their aggregate marks.
-* Tie-Breaking Rules: If two students have equal aggregate marks, the student with higher attendance gets the higher rank. If attendance is also equal, the student with higher total subject marks gets priority.
+- Aggregate Marks: Students must score at least 75% in aggregate.
+- Subject-wise Minimum Marks: Students must score at least 60 marks in every subject.
+- Attendance: Students must have at least 75% attendance.
+- Family Income: Annual family income must not exceed ₹2,50,000.
+- Ranking: Eligible students are ranked according to their aggregate marks.
+- Tie-Breaking Rules: If two students have equal aggregate marks, the student with higher attendance gets the higher rank. If attendance is also equal, the student with higher total subject marks gets priority.
 
 The program identifies eligible students, ranks them, and displays the final scholarship allocation list.
 
-### 2\. Algorithm
+### 2. Algorithm
 
 Step 1: Start the program.
 
@@ -23,26 +23,26 @@ Step 2: Enter the number of students.
 
 Step 3: For each student, enter:
 
-* Student name
-* Aggregate percentage
-* Subject marks
-* Attendance percentage
-* Annual family income
+- Student name
+- Aggregate percentage
+- Subject marks
+- Attendance percentage
+- Annual family income
 
 Step 4: Check eligibility conditions:
 
-* Aggregate marks ≥ 75%.
-* Each subject mark ≥ 60.
-* Attendance ≥ 75%.
-* Family income ≤ ₹2,50,000.
+- Aggregate marks ≥ 75%.
+- Each subject mark ≥ 60.
+- Attendance ≥ 75%.
+- Family income ≤ ₹2,50,000.
 
 Step 5: If all conditions are satisfied, add the student to the eligible list.
 
 Step 6: Sort eligible students using the following priority:
 
-* Higher aggregate percentage.
-* Higher attendance percentage.
-* Higher total subject marks.
+- Higher aggregate percentage.
+- Higher attendance percentage.
+- Higher total subject marks.
 
 Step 7: Assign ranks to eligible students.
 
@@ -52,47 +52,32 @@ Step 9: Display students who are not eligible.
 
 Step 10: Stop the program.
 
-### 3\. Flowchart
+### 3. Flowchart
 
+```text
 START
-
-↓
-
+   ↓
 Enter number of students
-
-↓
-
+   ↓
 Enter student details and marks
-
-↓
-
+   ↓
 Check eligibility criteria
-
-↓
-
+   ↓
 If eligible:
-- Add student to eligible list
-
+   - Add student to eligible list
 Else:
-- Mark as not eligible
-
-↓
-
-Sort eligible students by aggregate, attendance and total subject marks
-
-↓
-
+   - Mark as not eligible
+   ↓
+Sort eligible students by aggregate, attendance, and total subject marks
+   ↓
 Assign ranks to students
-
-↓
-
+   ↓
 Display scholarship results
-
-↓
-
+   ↓
 STOP
+```
 
-### 4\. Python Source Code
+### 4. Python Source Code
 
 ```python
 # University Scholarship Allocation System
@@ -108,7 +93,7 @@ MAX_INCOME = 250000
 n = int(input("Enter number of students: "))
 
 for i in range(n):
-    print("\nEnter details of Student", i + 1)
+    print(f"\nEnter details of Student {i + 1}")
 
     name = input("Enter student name: ")
     aggregate = float(input("Enter aggregate percentage: "))
@@ -124,23 +109,25 @@ for i in range(n):
     total_marks = sum(subjects)
 
     if (
-        aggregate >= MIN_AGGREGATE and
-        all(mark >= MIN_SUBJECT_MARK for mark in subjects) and
-        attendance >= MIN_ATTENDANCE and
-        income <= MAX_INCOME
+        aggregate >= MIN_AGGREGATE
+        and all(mark >= MIN_SUBJECT_MARK for mark in subjects)
+        and attendance >= MIN_ATTENDANCE
+        and income <= MAX_INCOME
     ):
-        students.append({
-            "name": name,
-            "aggregate": aggregate,
-            "attendance": attendance,
-            "total": total_marks
-        })
+        students.append(
+            {
+                "name": name,
+                "aggregate": aggregate,
+                "attendance": attendance,
+                "total": total_marks,
+            }
+        )
     else:
         not_eligible.append(name)
 
 students.sort(
     key=lambda x: (x["aggregate"], x["attendance"], x["total"]),
-    reverse=True
+    reverse=True,
 )
 
 print("\n===== SCHOLARSHIP ALLOCATION RESULTS =====")
@@ -148,7 +135,10 @@ print("\n===== SCHOLARSHIP ALLOCATION RESULTS =====")
 if students:
     print("\nRank  Name       Aggregate  Attendance  Total Marks")
     for rank, student in enumerate(students, start=1):
-        print(f"{rank:<4} {student['name']:<10} {student['aggregate']:<9} {student['attendance']:<10} {student['total']}")
+        print(
+            f"{rank:<4} {student['name']:<10} {student['aggregate']:<9} "
+            f"{student['attendance']:<10} {student['total']}"
+        )
 else:
     print("No eligible students found.")
 
@@ -161,7 +151,7 @@ else:
     print("All students are eligible.")
 ```
 
-### 5\. Sample Input
+### 5. Sample Input
 
 ```text
 Enter number of students: 3
@@ -194,7 +184,7 @@ Enter attendance percentage: 80
 Enter annual family income: 200000
 ```
 
-### 6\. Sample Output
+### 6. Sample Output
 
 ```text
 ===== SCHOLARSHIP ALLOCATION RESULTS =====
@@ -208,23 +198,23 @@ Rank  Name       Aggregate  Attendance  Total Marks
 Kumar
 ```
 
-### 7\. Explanation of Output
+### 7. Explanation of Output
 
-* Priya: Eligible because she satisfies all four eligibility conditions. She gets Rank 1 because she has the highest aggregate percentage.
-* Ravi: Eligible because he satisfies all four eligibility conditions. He gets Rank 2.
-* Kumar: Not eligible because his aggregate percentage is only 70%, which is below the required 75%.
+- Priya: Eligible because she satisfies all four eligibility conditions. She gets Rank 1 because she has the highest aggregate percentage.
+- Ravi: Eligible because he satisfies all four eligibility conditions. He gets Rank 2.
+- Kumar: Not eligible because his aggregate percentage is only 70%, which is below the required 75%.
 
-### 8\. Conclusion
+### 8. Conclusion
 
-The University Scholarship Allocation System successfully evaluates students based on academic marks, subject-wise performance, attendance, and family income. It identifies eligible students, ranks them according to predefined tie-breaking rules, and displays the final scholarship allocation results.
+The University Scholarship Allocation System successfully evaluates students based on academic marks, subject-wise performance, attendance, and family income. It identifies eligible students, ranks them, and displays the final scholarship allocation list.
 
 This program demonstrates important Python concepts such as:
 
-* Conditional statements (`if-else`)
-* Loops (`for`)
-* Lists and dictionaries
-* Functions (`sum`, `all`)
-* Sorting using `sort()`
-* Lambda expressions
+- Conditional statements (`if-else`)
+- Loops (`for`)
+- Lists and dictionaries
+- Functions (`sum`, `all`)
+- Sorting using `sort()`
+- Lambda expressions
 
 These concepts are useful for a B.Tech 1st-year Python programming practical examination.
