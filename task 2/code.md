@@ -100,7 +100,7 @@ flowchart TD
     D --> E[Enter transport cost]
     E --> F[Enter certificate cost per participant]
     F --> G[Enter expected number of participants]
-    G --> H[Enter registration fee per participant]
+    G --> H[Enter registration fee]
     H --> I[Enter sponsorship amount]
     I --> J[Compute fixed cost]
     J --> K[Compute variable cost]
