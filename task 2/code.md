@@ -92,23 +92,32 @@ Total Income = Contributions + Sponsorship
 
 ### 3\. Flowchart
 ```mermaid
-START
+flowchart TD
+    A([Start]) --> B[Enter venue cost]
+    B --> C[Enter equipment cost]
+    C --> D[Enter catering cost per participant]
+    D --> E[Enter transport cost]
+    E --> F[Enter certificate cost per participant]
+    F --> G[Enter expected number of participants]
+    G --> H[Enter registration fee per participant]
+    H --> I[Enter sponsorship amount]
 
-Enter all event expenses and financial details
+    I --> J[fixed_cost = venue + equipment + transport]
+    J --> K[variable_cost = catering + certificate]
+    K --> L[total_cost = fixed_cost + (variable_cost × participants)]
+    L --> M[contribution = registration × participants]
+    M --> N[total_income = contribution + sponsorship]
+    N --> O[sponsorship_shortfall = max(0, total_cost - contribution - sponsorship)]
+    O --> P[balance = total_income - total_cost]
 
-Calculate fixed cost and variable cost
+    P --> Q{registration > variable_cost?}
 
-Calculate total event cost and participant contributions
+    Q -- Yes --> R[minimum_registrations = (fixed_cost - sponsorship) / (registration - variable_cost)]
+    R --> S[minimum_registrations = ceil(value)]
+    S --> T[Display financial report]
+    Q -- No --> T
 
-Calculate sponsorship and total income
-
-Calculate profit or loss
-
-Calculate minimum registrations to break even
-
-Display financial report
-
-STOP
+    T --> U([Stop])
 ```
 ### 4\. Python Source Code
 
