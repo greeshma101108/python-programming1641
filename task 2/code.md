@@ -2,7 +2,7 @@
 
 Level: B.Tech 1st Year Programming Language: Python
 
-### 1\. Problem Statement
+### 1. Problem Statement
 
 The Campus Event Financial Planning System is designed to calculate and manage the expenses required to organize a college event.
 
@@ -40,7 +40,7 @@ The system calculates:
 
 * Minimum number of registrations required to break even.
 
-### 2\. Algorithm
+### 2. Algorithm
 
 * Start the program.
 
@@ -64,19 +64,19 @@ The system calculates:
 
 Fixed Cost = Venue + Equipment + Transport
 
-11\. Calculate variable cost per participant:
+11. Calculate variable cost per participant:
 
 Variable Cost = Catering + Certificate
 
-12\. Calculate total event cost:
+12. Calculate total event cost:
 
 Total Cost = Fixed Cost + (Variable Cost × Participants)
 
-13\. Calculate participant contributions:
+13. Calculate participant contributions:
 
 Contributions = Registration Fee × Participants
 
-14\. Calculate total income:
+14. Calculate total income:
 
 Total Income = Contributions + Sponsorship
 
@@ -90,7 +90,8 @@ Total Income = Contributions + Sponsorship
 
 * Stop the program.
 
-### 3\. Flowchart
+### 3. Flowchart
+
 ```mermaid
 flowchart TD
     A([Start]) --> B[Enter venue cost]
@@ -106,16 +107,16 @@ flowchart TD
     K --> L[total_cost = fixed_cost + (variable_cost × participants)]
     L --> M[contribution = registration × participants]
     M --> N[total_income = contribution + sponsorship]
-    N --> O[sponsionship_shortfall = max(0, total_cost - contribution - sponsorship)]
+    N --> O[sponsorship_shortfall = max(0, total_cost - contribution - sponsorship)]
     O --> P[balance = total_income - total_cost]
     P --> Q{registration > variable_cost?}
-    Q -- Yes --> R[minimum_registrations = (fixed_cost - sponsorship) / (registration - variable_cost)]
-    R --> S[minimum_registrations = ceil(value)]
-    S --> T[Display financial report]
-    Q -- No --> T
-    T --> U([Stop])
+    Q -- Yes --> R[minimum_registrations = ceil((fixed_cost - sponsorship) / (registration - variable_cost))]
+    R --> S[Display financial report]
+    Q -- No --> S
+    S --> T([Stop])
 ```
-### 4\. Python Source Code
+
+### 4. Python Source Code
 
 ```python
 
@@ -178,7 +179,7 @@ else:
 print("Minimum Registrations Required:", minimum)
 ```
 
-### 5\. Sample Input
+### 5. Sample Input
 
 ```text
 Enter venue cost: 10000
@@ -191,7 +192,7 @@ Enter registration fee per participant: 400
 Enter sponsorship amount: 10000
 ```
 
-### 6\. Sample Output
+### 6. Sample Output
 
 ```text
 --- CAMPUS EVENT FINANCIAL REPORT ---
@@ -210,9 +211,9 @@ Profit: 7000.0
 Minimum Registrations Required: 33
 ```
 
-### 7\. Conclusion
+### 7. Conclusion
 
-The Campus Event Financial Planning System helps colleges estimate event expenses, calculate participant contributions, identify sponsorship shortages and determine the minimum registrations required to break even.
+The Campus Event Financial Planning System helps colleges estimate event expenses, calculate participant contributions, identify sponsorship shortages and determine the minimum registrations required to achieve break-even.
 
 This program demonstrates the use of Python variables, arithmetic operations, conditional statements, user input and mathematical calculations.
 
@@ -231,6 +232,3 @@ Python concepts used:
 * Type conversion (`int()` and `float()`)
 
 Note: The break-even calculation assumes that registration fees and sponsorship remain fixed and that each additional participant adds the same catering and certificate costs.
-
-
-
