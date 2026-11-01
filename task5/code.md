@@ -73,6 +73,7 @@ Savings Percentage:
 
 ### 3\. Flowchart
 
+```mermaid
 START
 
 Enter number of appliances
@@ -94,6 +95,7 @@ Sort appliances by savings percentage
 Display ranked results
 
 STOP
+```
 
 ### 4\. Python Source Code
 
