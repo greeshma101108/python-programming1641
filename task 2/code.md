@@ -102,15 +102,15 @@ flowchart TD
     F --> G[Enter expected number of participants]
     G --> H[Enter registration fee per participant]
     H --> I[Enter sponsorship amount]
-    I --> J[fixed_cost = venue + equipment + transport]
-    J --> K[variable_cost = catering + certificate]
-    K --> L[total_cost = fixed_cost + (variable_cost * participants)]
-    L --> M[contribution = registration * participants]
-    M --> N[total_income = contribution + sponsorship]
-    N --> O[sponsorship_shortfall = max(0, total_cost - contribution - sponsorship)]
-    O --> P[balance = total_income - total_cost]
-    P --> Q{registration > variable_cost?}
-    Q -- Yes --> R[minimum_registrations = ceil((fixed_cost - sponsorship) / (registration - variable_cost))]
+    I --> J[Compute fixed cost]
+    J --> K[Compute variable cost]
+    K --> L[Compute total cost]
+    L --> M[Compute contribution]
+    M --> N[Compute total income]
+    N --> O[Compute sponsorship shortfall]
+    O --> P[Compute balance]
+    P --> Q{Check break-even condition}
+    Q -- Yes --> R[Compute minimum registrations]
     R --> S[Display financial report]
     Q -- No --> S
     S --> T([Stop])
