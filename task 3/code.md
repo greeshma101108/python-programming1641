@@ -53,7 +53,7 @@ The program displays whether the password is valid or invalid and explains each 
 * Stop the program.
 
 ### 3\. Flowchart
-
+```mermaid
 
 flowchart TD
     A([START]) --> B[/Enter Password/]
@@ -93,7 +93,7 @@ flowchart TD
 
     S --> U([STOP])
     T --> U
-
+```
 
 ### 4\. Python Source Code
 
