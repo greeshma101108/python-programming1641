@@ -72,28 +72,38 @@ Savings Percentage:
 * Stop the program.
 
 ### 3\. Flowchart
+```mermaid
 
-START
+flowchart TD
+    A([START]) --> B[/Enter Number of Appliances/]
+    B --> C[Initialize Empty Appliance List]
+    C --> D[/Enter Appliance Name/]
+    D --> E[/Enter Before and After Electricity Usage/]
 
-Enter number of appliances
+    E --> F{Is Before Usage Greater Than 0 and After Usage Non-Negative?}
 
-Enter appliance name and electricity usage
+    F -- No --> G[/Display Invalid Electricity Usage/]
+    F -- Yes --> H[Calculate Electricity Saved]
+    
+    H --> I[Calculate Savings Percentage]
+    I --> J[Store Appliance Details in List]
+    G --> K{Are More Appliances Remaining?}
+    J --> K
 
-Calculate electricity saved
+    K -- Yes --> D
+    K -- No --> L[Sort Appliances by Savings Percentage in Descending Order]
 
-Calculate savings percentage
+    L --> M{Are Valid Appliance Records Available?}
 
-Store appliance details
+    M -- No --> N[/Display No Valid Appliance Records/]
+    M -- Yes --> O[Assign Ranks to Appliances]
 
-Are all appliances entered?
+    O --> P[Display Energy Conservation Report]
+    P --> Q[Identify Highest Savings Appliance]
 
-No → Enter next appliance; Yes → Continue
-
-Sort appliances by savings percentage
-
-Display ranked results
-
-STOP
+    Q --> R([STOP])
+    N --> R
+```
 
 
 ### 4\. Python Source Code
