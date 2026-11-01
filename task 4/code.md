@@ -52,25 +52,46 @@ Finally, it displays a properly aligned monthly calendar.
 
 ### 3\. Flowchart
 
-START
+```mermaid
+flowchart TD
+    A([START]) --> B[/Enter Month Name/]
+    B --> C[/Enter Starting Weekday and Number of Days/]
 
-Enter month, starting weekday and number of days
+    C --> D{Is Starting Weekday Between 0 and 6?}
 
-Check input validity
+    D -- No --> E[/Display Invalid Starting Weekday/]
+    D -- Yes --> F{Is Number of Days 28, 29, 30 or 31?}
 
-Invalid
+    F -- No --> G[/Display Invalid Number of Days/]
+    F -- Yes --> H[Display Month Name and Weekday Headings]
 
-Display error message
+    H --> I[Initialize Date = 1]
+    I --> J[Start Outer Loop for Weeks]
+    J --> K[Start Inner Loop for 7 Days]
 
-Valid
+    K --> L{Is First Week and Day Less Than Starting Weekday?}
 
-Display weekday headings
+    L -- Yes --> M[Print Blank Spaces]
+    L -- No --> N{Is Date Less Than or Equal to Total Days?}
 
-Use nested loops to print dates
+    N -- Yes --> O[Print Date and Increment Date]
+    N -- No --> P[Print Blank Spaces]
 
-Display formatted monthly calendar
+    M --> Q{Are All 7 Days Completed?}
+    O --> Q
+    P --> Q
 
-STOP
+    Q -- No --> K
+    Q -- Yes --> R[Move to Next Week]
+
+    R --> S{Are All Dates Printed?}
+    S -- No --> J
+    S -- Yes --> T[/Display Formatted Monthly Calendar/]
+
+    T --> U([STOP])
+    E --> U
+    G --> U
+```
 
 ### 4\. Python Source Code
 
