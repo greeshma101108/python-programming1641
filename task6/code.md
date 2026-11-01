@@ -97,33 +97,44 @@ Assumed rules for this program:
 * Moderated marks cannot exceed maximum marks.
 
 ### 3\. Flowchart
+```mernaid
+flowchart TD
+    A([START]) --> B[/Enter Student Name/]
+    B --> C[/Enter Number of Subjects/]
+    C --> D[Initialize Original Total = 0 and Moderated Total = 0]
+    D --> E[Initialize Empty Subject Results List]
+    E --> F[Start For Loop for Each Subject]
+    F --> G[/Enter Subject Name/]
+    G --> H[/Enter Maximum Marks, Original Marks and Grace Marks/]
+    H --> I{Are Marks Valid?}
 
-START
+    I -- No --> J[/Display Invalid Marks Message/]
+    J --> K[Skip Current Subject]
 
-Enter student name and number of subjects
+    I -- Yes --> L[Calculate Moderated Marks]
+    L --> M[Apply Maximum Marks Constraint]
+    M --> N[Add Original Marks to Original Total]
+    N --> O[Add Moderated Marks to Moderated Total]
+    O --> P[Store Subject Details in List]
 
-Initialize original and moderated totals
+    K --> Q{Are More Subjects Remaining?}
+    P --> Q
 
-Enter subject name, maximum marks and original marks
+    Q -- Yes --> F
+    Q -- No --> R[Calculate Maximum Total]
 
-Enter moderation marks and validate inputs
+    R --> S{Are Valid Subject Records Available?}
 
-Calculate moderated marks without exceeding maximum marks
+    S -- No --> T[/Display No Valid Subject Records/]
+    T --> Z([STOP])
 
-Update original and moderated totals
-
-Are all subjects processed?
-
-No → Enter next subject | Yes → Continue
-
-Calculate original and moderated percentages
-
-Determine pass/fail results and compare outcomes
-
-Display examination moderation report
-
-STOP
-
+    S -- Yes --> U[Calculate Original and Moderated Percentages]
+    U --> V[Check Original Result Using 35 Marks Pass Rule]
+    V --> W[Check Moderated Result Using 35 Marks Pass Rule]
+    W --> X[Display Subject-wise Moderation Report]
+    X --> Y[Display Totals, Percentages, Results and Additional Marks]
+    Y --> Z
+```
 ### 4\. Python Source Code
 
 ```python
