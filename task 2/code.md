@@ -114,6 +114,7 @@ flowchart TD
     S --> T[Display financial report]
     Q -- No --> T
     T --> U([Stop])
+```
 ### 4\. Python Source Code
 
 ```python
