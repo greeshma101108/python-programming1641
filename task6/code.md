@@ -97,7 +97,9 @@ Assumed rules for this program:
 * Moderated marks cannot exceed maximum marks.
 
 ### 3\. Flowchart
+
 ```mernaid
+
 flowchart TD
     A([START]) --> B[/Enter Student Name/]
     B --> C[/Enter Number of Subjects/]
@@ -135,6 +137,7 @@ flowchart TD
     X --> Y[Display Totals, Percentages, Results and Additional Marks]
     Y --> Z
 ```
+
 ### 4\. Python Source Code
 
 ```python
