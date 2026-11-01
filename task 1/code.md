@@ -47,7 +47,7 @@ The program identifies eligible candidates, arranges them in order of merit, and
 
 ## Flowchart
 
-```text
+```mermaid
 START
    |
    v
