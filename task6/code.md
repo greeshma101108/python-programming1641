@@ -98,7 +98,7 @@ Assumed rules for this program:
 
 ### 3\. Flowchart
 
-```mernaid
+```mermaid
 
 flowchart TD
     A([START]) --> B[/Enter Student Name/]
