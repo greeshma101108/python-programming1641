@@ -54,25 +54,46 @@ The program displays whether the password is valid or invalid and explains each 
 
 ### 3\. Flowchart
 
-START
 
-Enter password
+flowchart TD
+    A([START]) --> B[/Enter Password/]
+    B --> C[Initialize Empty Error List]
 
-Check length and character categories
+    C --> D{Length >= 8?}
+    D -- No --> E[Add Length Error]
+    D -- Yes --> F{Contains Uppercase Letter?}
+    E --> F
 
-Check repetition and prohibited words
+    F -- No --> G[Add Uppercase Error]
+    F -- Yes --> H{Contains Lowercase Letter?}
+    G --> H
 
-Are all conditions satisfied?
+    H -- No --> I[Add Lowercase Error]
+    H -- Yes --> J{Contains Digit?}
+    I --> J
 
-YES
+    J -- No --> K[Add Digit Error]
+    J -- Yes --> L{Contains Special Character?}
+    K --> L
 
-Display Password Valid
+    L -- No --> M[Add Special Character Error]
+    L -- Yes --> N{Three Consecutive Identical Characters?}
+    M --> N
 
-NO
+    N -- Yes --> O[Add Repetition Error]
+    N -- No --> P{Contains Prohibited Substring?}
+    O --> P
 
-Display failure reasons
+    P -- Yes --> Q[Add Prohibited Substring Error]
+    P -- No --> R{Error List Empty?}
+    Q --> R
 
-STOP
+    R -- Yes --> S[/Display Password Valid/]
+    R -- No --> T[/Display Password Invalid and Failure Reasons/]
+
+    S --> U([STOP])
+    T --> U
+
 
 ### 4\. Python Source Code
 
