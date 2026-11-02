@@ -138,90 +138,7 @@ flowchart TD
     Y --> Z
 ```
 
-### 4\. Python Source Code
 
-```python
-
-# University Examination Result Moderation
-
-name = input("Enter student name: ")
-
-n = int(input("Enter number of subjects: "))
-
-original_total = 0
-moderated_total = 0
-
-subject_results = []
-
-# Process each subject
-for i in range(n):
-
-    print("\nSubject", i + 1)
-
-    subject = input("Enter subject name: ")
-
-    maximum = int(input("Enter maximum marks: "))
-    original = int(input("Enter original marks: "))
-    grace = int(input("Enter moderation marks: "))
-
-    # Validate marks
-    if maximum <= 0 or original < 0 or original > maximum or grace < 0 or grace > 5:
-        print("Invalid marks or moderation value!")
-        continue
-
-    # Apply moderation
-    moderated = min(original + grace, maximum)
-
-    # Update totals
-    original_total += original
-    moderated_total += moderated
-
-    subject_results.append(
-        [subject, original, moderated, maximum]
-    )
-
-# Calculate maximum total
-maximum_total = sum(item[3] for item in subject_results)
-
-if len(subject_results) == 0:
-    print("\nNo valid subject records available.")
-
-else:
-    # Calculate percentages
-    original_percentage = (original_total / maximum_total) * 100
-
-    moderated_percentage = (moderated_total / maximum_total) * 100
-
-    # Check results (35 marks required per subject)
-    original_result = all(item[1] >= 35 for item in subject_results)
-
-    moderated_result = all(item[2] >= 35 for item in subject_results)
-
-    # Display report
-    print("\n--- EXAMINATION MODERATION REPORT ---")
-
-    print("Student Name:", name)
-
-    print("\nSubject  Original  Moderated  Maximum")
-
-    for item in subject_results:
-        print(item[0], "   ", item[1], "       ",
-              item[2], "        ", item[3])
-
-    print("\nOriginal Total:", original_total)
-    print("Moderated Total:", moderated_total)
-
-    print("Original Percentage:", round(original_percentage, 2), "%")
-    print("Moderated Percentage:", round(moderated_percentage, 2), "%")
-
-    print("\nOriginal Result:",
-          "PASS" if original_result else "FAIL")
-
-    print("Moderated Result:",
-          "PASS" if moderated_result else "FAIL")
-
-    print("Additional Marks:", moderated_total - original_total)
-```
 
 ### 5\. Sample Input
 
@@ -272,32 +189,4 @@ Moderated Result: PASS
 Additional Marks: 15
 ```
 
-### 7\. Conclusion
-
-The University Examination Result Moderation System processes student marks across multiple subjects and applies moderation rules without exceeding maximum marks.
-
-It compares original and moderated results, calculates percentages and identifies changes in students' pass/fail status.
-
-Python concepts used:
-
-* Variables and data types
-
-* Lists and nested lists
-
-* `for` loops
-
-* Conditional statements
-
-* `min()` function
-
-* `sum()` function
-
-* `all()` function
-
-* Arithmetic operators
-
-* `round()` function
-
-Suitable for B.Tech 1st Year Practical Record
-
-Note: The pass mark of 35 and maximum grace marks of 5 are assumed for this educational program. Actual university moderation policies may be different. The program skips invalid subject entries, so the report is based only on valid entries.
+valid subject entries, so the report is based only on valid entries.
