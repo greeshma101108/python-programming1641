@@ -106,60 +106,6 @@ flowchart TD
 ```
 
 
-### 4\. Python Source Code
-
-```python
-
-# Energy Conservation Before-and-After Analysis
-
-appliances = []
-
-n = int(input("Enter number of appliances: "))
-
-# Get appliance details
-for i in range(n):
-
-    print("\nAppliance", i + 1)
-
-    name = input("Enter appliance name: ")
-
-    before = float(input("Enter usage before intervention (kWh): "))
-
-    after = float(input("Enter usage after intervention (kWh): "))
-
-    # Validate electricity usage
-    if before <= 0 or after < 0:
-        print("Invalid electricity usage!")
-        continue
-
-    # Calculate savings
-    saved = before - after
-
-    percentage = (saved / before) * 100
-
-    # Store appliance details
-    appliances.append([name, before, after, saved, percentage])
-
-# Sort based on savings percentage
-appliances.sort(key=lambda x: x[4], reverse=True)
-
-# Display results
-print("\n--- ENERGY CONSERVATION REPORT ---")
-
-print("Rank  Appliance  Before  After  Saved  Savings %")
-
-for rank, item in enumerate(appliances, 1):
-
-    print(rank, "   ", item[0], "   ",
-          item[1], "   ", item[2], "   ",
-          item[3], "   ", round(item[4], 2), "%")
-
-# Display best performing appliance
-if len(appliances) > 0:
-    print("\nHighest Savings Appliance:", appliances[0][0])
-else:
-    print("\nNo valid appliance records available.")
-```
 
 ### 5\. Sample Input
 
@@ -196,33 +142,5 @@ Rank  Appliance  Before  After  Saved  Savings %
 Highest Savings Appliance: Light
 ```
 
-### 7\. Conclusion
 
-The Energy Conservation Before-and-After Analysis System compares electricity consumption before and after energy-saving interventions. It calculates electricity savings, determines savings percentages and ranks appliances based on their performance.
-
-This program helps identify which appliances have achieved the highest percentage of energy savings.
-
-Python concepts used:
-
-* Variables and data types
-
-* Lists
-
-* `for` loops
-
-* Conditional statements
-
-* Arithmetic operators
-
-* `sort()` function
-
-* `lambda` function
-
-* `enumerate()` function
-
-* `round()` function
-
-Suitable for B.Tech 1st Year Practical Record
-
-Note: Electricity consumption is measured in kWh (kilowatt-hours). A negative saving percentage means electricity usage increased after the intervention.
 
